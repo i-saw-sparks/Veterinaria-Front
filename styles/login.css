@@ -1,0 +1,47 @@
+.card-login{
+    background-color: rgba(255, 255, 255, 0.589) !important;
+    color: black;
+    border-radius: 30px !important;
+    border-color: rgba(150, 156, 151, 0.274);
+    border-width: 2px;
+}
+
+.btn-login{
+    background-color: rgb(195, 229, 231);
+    border-color: rgb(12, 42, 59);
+    border-width: 0;
+    color: black;
+}
+
+.btn-login:hover{
+    background-color: rgb(26, 23, 68);
+}
+
+.btn-login:active{
+    background-color: rgb(26, 23, 68);
+}
+
+.input-login{
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-color: rgb(12, 59, 20);
+}
+
+.input-login::placeholder{
+    color: white;
+}
+
+.input-login:focus{
+    background-color: rgba(0, 0, 0, 0.6);
+    border-color: rgb(12, 59, 20);
+    color: white;
+}
+
+.login-navigate{
+    font-size: 120%;
+}
+
+.login-navigate a{
+    color: white;
+    font-weight: bolder;
+}

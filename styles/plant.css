@@ -1,0 +1,12 @@
+.plant-stat{
+    font-size: 18px;
+    font-weight: bolder;
+}
+
+.plant-stat span{
+    font-weight: normal;
+}
+.plant-icon{
+    width: 50% !important;
+    height: auto !important;
+}
