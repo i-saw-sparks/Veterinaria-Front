@@ -15,19 +15,19 @@ let productoController;
     const test = [
         {
             id : 'fecha',
-            type : 'text',
+            type : 'date',
             placeholder: 'Ingrese la fecha de la cita: AAAA-MM-DD',
             name : 'Fecha'
         },
         {
             id : 'hora_inicio',
-            type : 'text',
+            type : 'time',
             placeholder : 'Ingrese la hora de inicio de la cita: HH:MM:SS',
             name : 'Hora de inicio'
         },
         {
             id : 'hora_fin',
-            type : 'text',
+            type : 'time',
             placeholder : 'Ingrese la hora de fin de la cita: HH:MM:SS',
             name : 'Hora de fin'
         },
