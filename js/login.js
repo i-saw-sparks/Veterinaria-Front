@@ -33,7 +33,7 @@ loginForm.addEventListener('submit', e => {
             localStorage.setItem('token', resp['token']);
             localStorage.setItem('logged', 'true');
 
-            window.location.assign('principal.html');
+            window.location.assign('calendario.html');
         }else{
             alertar('No se pudo iniciar sesión', 'danger');
         }
