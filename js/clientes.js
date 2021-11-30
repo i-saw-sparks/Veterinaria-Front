@@ -1,6 +1,6 @@
 const body = document.getElementById('body');
 
-(async () => {
+const loadClientes = (async () => {
     let resp = await get('cliente');
 
     body.innerHTML = '';
@@ -27,6 +27,14 @@ const body = document.getElementById('body');
     });
 })();
 
-function eliminar(id) {
-    console.log(id);
+async function eliminar(id) {
+    if (confirm('¿Desea borrar este cliente?')) {
+        let ok = await deleteRecord('cliente', id);
+        if (ok) {
+            alertar('El cliente se ha eliminado', 'success');
+            loadClientes();
+        } else {
+            alertar('No se pudo eliminar al cliente', 'danger');
+        }
+    }
 }
