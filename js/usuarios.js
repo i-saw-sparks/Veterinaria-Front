@@ -1,6 +1,6 @@
 const body = document.getElementById('body');
 
-(async () => {
+const loadUsuarios = (async () => {
     let resp = await get('usuario');
 
     body.innerHTML = '';
@@ -13,11 +13,11 @@ const body = document.getElementById('body');
                         <i class="far fa-calendar-alt m-2"></i> Horario: ${u.horario}
                         <i class="far fa-user-circle m-2"></i> Permisos: ${u.permisos}
                     </h6>
-                    <a href="cliente.html?id=${u.id}" class="card-link btn btn-primary mt-3">
-                        Editar proveedor
+                    <a href="clientes.html?id=${u.id}" class="card-link btn btn-primary mt-3">
+                        Editar usuario
                     </a>
                     <a onclick="eliminar(${u.id})" class="card-link btn btn-danger mt-3">
-                        Eliminar proveedor
+                        Eliminar usuario
                     </a>
                 
                 </div>
@@ -26,6 +26,14 @@ const body = document.getElementById('body');
     });
 })();
 
-function eliminar(id) {
-    console.log(id);
+async function eliminar(id) {
+    if (confirm('¿Desea borrar este usuario?')) {
+        let ok = await deleteRecord('usuario', id);
+        if (ok) {
+            alertar('El usuario se ha eliminado', 'success');
+            loadUsuarios();
+        } else {
+            alertar('No se pudo eliminar al usuario', 'danger');
+        }
+    }
 }
