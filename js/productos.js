@@ -1,6 +1,6 @@
 const body = document.getElementById('body');
 
-(async () => {
+const loadProductos = (async () => {
     let resp = await get('producto');
     body.innerHTML = '';
     resp.forEach(p => {
@@ -11,7 +11,7 @@ const body = document.getElementById('body');
                     <h6 class="card-subtitle text-muted">
                         <i class="fas fa-dollar-sign m-2"></i> $${p.precio}
                         <i class="fas fa-box-open m-2"></i> Cantidad: ${p.cantidad}
-                        <i class="fas fa-angle-double-right"></i> ${p.tipo}
+                        <i class="fas fa-angle-double-right"></i> Tipo: ${p.tipo}
                     </h6>
                     <h6 class="card-subtitle text-muted">
                         <i class="fas fa-info m-2"></i> ${p.descripcion}
@@ -29,6 +29,14 @@ const body = document.getElementById('body');
     });
 })();
 
-function eliminar(id) {
-    console.log(id);
+async function eliminar(id) {
+    if (confirm('¿Desea borrar este producto?')) {
+        let ok = await deleteRecord('producto', id);
+        if (ok) {
+            alertar('El producto se ha eliminado', 'success');
+            loadProductos();
+        } else {
+            alertar('No se pudo eliminar al producto', 'danger');
+        }
+    }
 }

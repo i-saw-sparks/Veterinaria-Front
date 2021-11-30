@@ -1,6 +1,6 @@
 const body = document.getElementById('body');
 
-(async () => {
+const loadMascotas = (async () => {
     let resp = await get('mascota');
         body.innerHTML = '';
         resp.forEach(m => {
@@ -9,7 +9,7 @@ const body = document.getElementById('body');
                 <div class="card-body">
                     <h5 class="card-title">${ m.nombre }</h5>
                     <h6 class="card-subtitle text-muted">
-                        <i class="far fa-calendar-alt m-2"></i> ${ m.fecha_nacimiento }
+                        <i class="far fa-calendar-alt m-2"></i> Fecha de nacimiento: ${ m.fecha_nacimiento }
                         <i class="fas fa-paw m-2"></i> Especie: ${ m.especie }
                     </h6>
                     <a href="cliente.html?id=${ m.id }" class="card-link btn btn-primary mt-3">
@@ -18,13 +18,23 @@ const body = document.getElementById('body');
                     <a onclick="eliminar(${ m.id })" class="card-link btn btn-danger mt-3">
                         Eliminar mascota
                     </a>
-                
+                    <a href="registros.html?id=${ m.id }" class="card-link btn btn-success mt-3">
+                        Añadir registro
+                    </a>
                 </div>
             </div>
             `;
         });
 })();
 
-function eliminar(id){
-    console.log(id);
+async function eliminar(id) {
+    if (confirm('¿Desea borrar esta mascota?')) {
+        let ok = await deleteRecord('mascota', id);
+        if (ok) {
+            alertar('La mascota se ha eliminado', 'success');
+            loadMascotas();
+        } else {
+            alertar('No se pudo eliminar la mascota', 'danger');
+        }
+    }
 }

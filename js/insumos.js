@@ -1,6 +1,6 @@
 const body = document.getElementById('body');
 
-(async () => {
+const loadInsumos = (async () => {
     let resp = await get('insumo');
 
     body.innerHTML = '';
@@ -30,6 +30,14 @@ const body = document.getElementById('body');
     });
 })();
 
-function eliminar(id) {
-    console.log(id);
+async function eliminar(id) {
+    if (confirm('¿Desea borrar este insumo?')) {
+        let ok = await deleteRecord('insumo', id);
+        if (ok) {
+            alertar('El insumo se ha eliminado', 'success');
+            loadInsumos();
+        } else {
+            alertar('No se pudo eliminar el insumo', 'danger');
+        }
+    }
 }

@@ -1,6 +1,6 @@
 const body = document.getElementById('body');
 
-(async () => {
+const loadProveedores = (async () => {
     let resp = await get('proveedor');
 
     body.innerHTML = '';
@@ -30,6 +30,14 @@ const body = document.getElementById('body');
     });
 })();
 
-function eliminar(id) {
-    console.log(id);
+async function eliminar(id) {
+    if (confirm('¿Desea borrar este proveedor?')) {
+        let ok = await deleteRecord('proveedor', id);
+        if (ok) {
+            alertar('El proveedor se ha eliminado', 'success');
+            loadProveedores();
+        } else {
+            alertar('No se pudo eliminar al proveedor', 'danger');
+        }
+    }
 }

@@ -1,6 +1,6 @@
 const body = document.getElementById('body');
 
-(async () => {
+const loadCitas = (async () => {
     let resp = await get('cita');
     body.innerHTML = '';
     resp.forEach(c => {
@@ -17,10 +17,10 @@ const body = document.getElementById('body');
                     <i class="fas fa-paw m-2"></i> ${c.nombreMascota}
                 </h6>
                 <a href="cliente.html?id=${c.id}" class="card-link btn btn-primary mt-3">
-                    Editar detalles
+                    Editar cita
                 </a>
                 <a onclick="eliminar(${c.id})" class="card-link btn btn-danger mt-3">
-                    Eliminar cliente
+                    Eliminar cita
                 </a>
             
             </div>
@@ -29,6 +29,14 @@ const body = document.getElementById('body');
     });
 })();
 
-function eliminar(id) {
-    console.log(id);
+async function eliminar(id) {
+    if (confirm('¿Desea borrar esta cita?')) {
+        let ok = await deleteRecord('cita', id);
+        if (ok) {
+            alertar('La cita se ha eliminado', 'success');
+            loadCitas();
+        } else {
+            alertar('No se pudo eliminar la cita', 'danger');
+        }
+    }
 }
