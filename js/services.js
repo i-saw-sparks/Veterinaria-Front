@@ -12,10 +12,10 @@ function getToken(method = 'GET'){
 
 let get = async(propiedad) => {
     try{
-        let resp = await fetch(baseUrl + 'cliente', getToken());
+        let resp = await fetch(baseUrl + propiedad, getToken());
         resp = await resp.json();
         return resp;
-        
+
     }catch(e){
         console.error(e);
         return [];
