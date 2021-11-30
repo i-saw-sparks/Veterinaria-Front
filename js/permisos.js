@@ -18,12 +18,16 @@ const permisos  = [
         ruta: 'mascotas.html'
     },
     {
-        nombre: 'Productos e insumos',
+        nombre: 'Productos',
         ruta: 'productos.html'
     },
     {
+        nombre: 'Insumos',
+        ruta: 'insumos.html'
+    },
+    {
         nombre: 'Proveedores',
-        ruta: 'provedores.html'
+        ruta: 'proveedores.html'
     },
     {
         nombre: 'Usuarios',
