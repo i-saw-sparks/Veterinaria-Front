@@ -68,26 +68,29 @@
                     </div>
                 </div>
                 <!-- Aquí va el contenido -->
-                <div class="container my-3">
-                    <div class="alert alert-dismissible py-3" style="text-align:center;" id="alert">
-                        <span id="alert-message"></span>
-                        <a href="#" class="close" onclick="$('#alert').hide();">&times;</a>
-                    </div>
-                    <div class="row" id="contenido">
-                        <div class="col-md-9">
-                        </div>
-                        <div class="col-md-3">
-                            <a href="new-mascota.html">
-                                <button class="btn btn-success" >
-                                    Nueva mascota
-                                </button>
-                            </a>
-                        </div>
-                    </div>
+                <div class="container-fluid">
                     <div class="row">
-                        <div class="col-md-12" id="body">
-
+                        <div class="alert alert-dismissible py-3" style="text-align:center;" id="alert">
+                            <span id="alert-message"></span>
+                            <a href="#" class="close" onclick="$('#alert').hide();">&times;</a>
                         </div>
+                        <div class="col-md-2"></div>
+                        <div class="col-lg-8">
+                            <form id="form">
+                                
+                                <div id="form_content_">
+
+                                </div>
+                                
+                                <div class="text-center my-3">
+                                    <button class="btn btn-success px-3" type="submit">
+                                        <i class="fas fa-save mr-1"></i>
+                                        Guardar
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-2"></div>
                     </div>
                 </div>
             </div>
@@ -216,10 +219,11 @@
 
         });
     </script>
-    <script src="js/auth.js"></script>
     <script src="js/alert.js"></script>
+    <script src="js/auth.js"></script>
     <script src="js/permisos.js"></script>
     <script src="js/services.js"></script>
-    <script src="js/mascotas.js"></script>
+    <script src="js/form-builder.js"></script>
+    <script src="js/mascotaForm.js"></script>
 </body>
 </html>
