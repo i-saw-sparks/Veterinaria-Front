@@ -15,7 +15,7 @@
 
     <!-- CSS -->
 
-    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="styles/estilos.css">
 
     <!-- Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,22 +41,8 @@
                 <div class="linea"></div>
             </div>
 
-            <a href="#" class=" mt-2 position-relative">
-                <div class="  position-absolute rounded"></div>
-                <small class="f-18 c-blanco">Calendario</small>
-            </a>
-            <a href="#" class=" mt-2 position-relative">
-                <div class="  position-absolute rounded"></div>
-                <small class="f-18 c-blanco">Productos</small>
-            </a>
-            <a href="#" class=" mt-2 position-relative">
-                <div class="  position-absolute rounded"></div>
-                <small class="f-18 c-blanco">Administración</small>
-            </a>
-            <a onclick="logout()" class=" mt-2 position-relative">
-                <div class="  position-absolute rounded"></div>
-                <small class="f-18 c-blanco">Cerrar sesión</small>
-            </a>
+            <div id="permisos">
+            </div>
             
         </div>
 
@@ -170,6 +156,7 @@
         });
     </script>
     <script src="js/auth.js"></script>
+    <script src="js/permisos.js"></script>
 
 </body>
 
