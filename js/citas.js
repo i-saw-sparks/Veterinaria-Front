@@ -4,6 +4,7 @@ const loadCitas = async () => {
     let resp = await get('cita');
     body.innerHTML = '';
     resp.forEach(c => {
+        fecha = c.fecha.substring(0, c.fecha.indexOf('T'));
         body.innerHTML += `
         <div class="card m-3">
             <div class="card-body">
@@ -11,6 +12,7 @@ const loadCitas = async () => {
                 <h6 class="card-subtitle text-muted">
                     <i class="fas fa-clock m-2"></i> ${c.hora_inicio}
                     <i class="far fa-clock m-2"></i> ${c.hora_fin}
+                    <i class="far fa-calendar-alt m-2"></i> ${fecha}
                 </h6>
                 <h6 class="card-subtitle text-muted">
                     <i class="fas fa-user m-2"></i> ${c.nombreCliente}
