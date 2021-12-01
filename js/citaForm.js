@@ -54,5 +54,6 @@ let productoController;
     ];
 
     productoController = new FormBuilder(test, 'form_content_', 'form', 'cita');
+    await productoController.load();
     
 })();

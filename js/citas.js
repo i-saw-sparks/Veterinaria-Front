@@ -1,6 +1,6 @@
 const body = document.getElementById('body');
 
-const loadCitas = (async () => {
+const loadCitas = async () => {
     let resp = await get('cita');
     body.innerHTML = '';
     resp.forEach(c => {
@@ -16,7 +16,7 @@ const loadCitas = (async () => {
                     <i class="fas fa-user m-2"></i> ${c.nombreCliente}
                     <i class="fas fa-paw m-2"></i> ${c.nombreMascota}
                 </h6>
-                <a href="cliente.html?id=${c.id}" class="card-link btn btn-primary mt-3">
+                <a href="new-cita.html?id=${c.id}" class="card-link btn btn-primary mt-3">
                     Editar cita
                 </a>
                 <a onclick="eliminar(${c.id})" class="card-link btn btn-danger mt-3">
@@ -27,6 +27,10 @@ const loadCitas = (async () => {
         </div>
         `;
     });
+}
+
+(async()=>{
+    await loadCitas();
 })();
 
 async function eliminar(id) {
@@ -34,7 +38,7 @@ async function eliminar(id) {
         let ok = await deleteRecord('cita', id);
         if (ok) {
             alertar('La cita se ha eliminado', 'success');
-            loadCitas();
+            await loadCitas();
         } else {
             alertar('No se pudo eliminar la cita', 'danger');
         }

@@ -35,6 +35,17 @@ let get = async(propiedad) => {
     }
 }
 
+let getRecord = async(propiedad, id) => {
+    try{
+        let resp = await fetch(baseUrl + propiedad + '/' + id, getToken());
+        resp = await resp.json();
+        return resp;
+    }catch(e){
+        console.error(e);
+        return {};
+    }
+}
+
 let deleteRecord = async(propiedad, id) => {
     try{
         let resp = await fetch(baseUrl + propiedad + '/' + id, getToken('DELETE'));
@@ -50,6 +61,18 @@ let deleteRecord = async(propiedad, id) => {
 let insertRecord = async(propiedad, body) => {
     try{
         let resp = await fetch(baseUrl + propiedad, postToken(body));
+        resp = await resp.json();
+        console.log(resp);
+        return true;
+    }catch(e){
+        console.error(e);
+        return false;
+    }
+}
+
+let updateRecord = async(propiedad, body) => {
+    try{
+        let resp = await fetch(baseUrl + propiedad, postToken(body, 'PUT'));
         resp = await resp.json();
         console.log(resp);
         return true;

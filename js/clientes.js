@@ -1,6 +1,6 @@
 const body = document.getElementById('body');
 
-const loadClientes = (async () => {
+async function loadClientes() {
     let resp = await get('cliente');
 
     body.innerHTML = '';
@@ -25,6 +25,10 @@ const loadClientes = (async () => {
         </div>
         `;
     });
+};
+
+(async()=>{
+    await loadClientes();
 })();
 
 async function eliminar(id) {
@@ -32,7 +36,7 @@ async function eliminar(id) {
         let ok = await deleteRecord('cliente', id);
         if (ok) {
             alertar('El cliente se ha eliminado', 'success');
-            loadClientes();
+            await loadClientes();
         } else {
             alertar('No se pudo eliminar al cliente', 'danger');
         }
