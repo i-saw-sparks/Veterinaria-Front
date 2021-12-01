@@ -14,7 +14,7 @@ async function loadClientes() {
                     <i class="fas fa-home mx-2"></i> ${c.direccion}
                     <i class="far fa-envelope mx-2"></i> ${c.email}
                 </h6>
-                <a href="cliente.html?id=${c.id}" class="card-link btn btn-primary mt-3">
+                <a href="new-cliente.html?id=${c.id}" class="card-link btn btn-primary mt-3">
                     Editar detalles
                 </a>
                 <a onclick="eliminar(${c.id})" class="card-link btn btn-danger mt-3">

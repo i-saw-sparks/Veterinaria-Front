@@ -33,5 +33,5 @@ let productoController;
     ];
 
     clienteController = new FormBuilder(test, 'form_content_', 'form', 'cliente');
-    
+    await clienteController.load();
 })();
