@@ -12,12 +12,17 @@ let productoController;
     usuarios = usuarios.map(p => ({nombre: p.nombre, id: p.id}));
     mascotas = mascotas.map(p => ({nombre: p.nombre, id: p.id}));
 
+    let tzoffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
+    let date = (new Date(Date.now() - tzoffset)).toISOString().slice(0, -1);
+    date = date.substring(0, date.indexOf('T'));
+
     const test = [
         {
             id : 'fecha',
             type : 'date',
             placeholder: 'Ingrese la fecha de la cita: AAAA-MM-DD',
-            name : 'Fecha'
+            name : 'Fecha',
+            min : date
         },
         {
             id : 'hora_inicio',

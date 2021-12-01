@@ -19,6 +19,7 @@ class FormBuilder {
 
         properties.forEach(p => {
             console.log(p);
+            const min = p['min'] || "";
             this.form[p.id] = document.getElementById(p.id);
 
             if (p.type === 'select') {
@@ -30,7 +31,7 @@ class FormBuilder {
                 <div class="form-group">
                     <label for="${p.id}"> ${p.name} </label>
                     <select class="form-control" id="${p.id}" placeholder="${p.placeholder}" required>
-                        <option selected disabled> ${p.placeholder}</option>
+                        <option selected disabled value=""> ${p.placeholder}</option>
                         ${options}
                     </select> 
                 </div>`);
@@ -38,7 +39,7 @@ class FormBuilder {
                 this.append(`
                 <div class="form-group">
                     <label for="${p.id}"> ${p.name} </label>
-                    <input type="${p.type}" class="form-control" id="${p.id}" placeholder="${p.placeholder}" required> 
+                    <input type="${p.type}" min="${min}" class="form-control" id="${p.id}" placeholder="${p.placeholder}" required> 
                 </div>`);
             }
         });
