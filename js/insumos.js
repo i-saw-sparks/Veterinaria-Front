@@ -1,6 +1,6 @@
 const body = document.getElementById('body');
 
-const loadInsumos = (async () => {
+const loadInsumos = async () => {
     let resp = await get('insumo');
 
     body.innerHTML = '';
@@ -17,7 +17,7 @@ const loadInsumos = (async () => {
                     <h6 class="card-subtitle text-muted">
                         <i class="fas fa-info m-2"></i> ${i.descripcion}
                     </h6>
-                    <a href="cliente.html?id=${i.id}" class="card-link btn btn-primary mt-3">
+                    <a href="new-insumo.html?id=${i.id}" class="card-link btn btn-primary mt-3">
                         Editar insumo
                     </a>
                     <a onclick="eliminar(${i.id})" class="card-link btn btn-danger mt-3">
@@ -28,6 +28,10 @@ const loadInsumos = (async () => {
             </div>
             `;
     });
+}
+
+(async()=>{
+    await loadInsumos();
 })();
 
 async function eliminar(id) {
@@ -35,7 +39,7 @@ async function eliminar(id) {
         let ok = await deleteRecord('insumo', id);
         if (ok) {
             alertar('El insumo se ha eliminado', 'success');
-            loadInsumos();
+            await loadInsumos();
         } else {
             alertar('No se pudo eliminar el insumo', 'danger');
         }

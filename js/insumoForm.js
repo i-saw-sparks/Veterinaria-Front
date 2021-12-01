@@ -47,5 +47,5 @@ let productoController;
     ];
 
     insumoController = new FormBuilder(test, 'form_content_', 'form', 'insumo');
-    
+    await insumoController.load();
 })();
