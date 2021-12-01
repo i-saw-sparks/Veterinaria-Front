@@ -16,8 +16,8 @@ let productoController;
         },
         {
             id : 'horario',
-            type : 'text',
-            placeholder : 'Ingrese el horario del usuario',
+            type : 'number',
+            placeholder : 'Ingrese el horario del usuario. Ej. (L,M,-,-,-,S,D): 1100011 ',
             name : 'Horario del usuario'
         },
         {
