@@ -38,6 +38,6 @@ let productoController;
         }
     ];
 
-    clienteController = new FormBuilder(test, 'form_content_', 'form', 'mascota');
-    
+    mascotaController = new FormBuilder(test, 'form_content_', 'form', 'mascota');
+    await mascotaController.load();
 })();

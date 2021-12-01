@@ -1,6 +1,6 @@
 const body = document.getElementById('body');
 
-const loadMascotas = (async () => {
+const loadMascotas = async () => {
     let resp = await get('mascota');
         body.innerHTML = '';
         resp.forEach(m => {
@@ -12,7 +12,7 @@ const loadMascotas = (async () => {
                         <i class="far fa-calendar-alt m-2"></i> Fecha de nacimiento: ${ m.fecha_nacimiento }
                         <i class="fas fa-paw m-2"></i> Especie: ${ m.especie }
                     </h6>
-                    <a href="cliente.html?id=${ m.id }" class="card-link btn btn-primary mt-3">
+                    <a href="new-mascota.html?id=${ m.id }" class="card-link btn btn-primary mt-3">
                         Editar mascota
                     </a>
                     <a onclick="eliminar(${ m.id })" class="card-link btn btn-danger mt-3">
@@ -25,6 +25,10 @@ const loadMascotas = (async () => {
             </div>
             `;
         });
+}
+
+(async()=>{
+    await loadMascotas();
 })();
 
 async function eliminar(id) {
@@ -32,7 +36,7 @@ async function eliminar(id) {
         let ok = await deleteRecord('mascota', id);
         if (ok) {
             alertar('La mascota se ha eliminado', 'success');
-            loadMascotas();
+            await loadMascotas();
         } else {
             alertar('No se pudo eliminar la mascota', 'danger');
         }
