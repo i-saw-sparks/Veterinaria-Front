@@ -1,6 +1,7 @@
 let productoController;
 
 (async()=>{
+
     const test = [
         {
             id : 'nombre',
@@ -35,5 +36,5 @@ let productoController;
     ];
 
     productoController = new FormBuilder(test, 'form_content_', 'form', 'usuario');
-    
+    await productoController.load();
 })();
