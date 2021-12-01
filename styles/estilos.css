@@ -58,6 +58,11 @@ body {
     background-color: #9675CE !important;
 }
 
+#citas-container{
+    height: 84vh;
+    overflow-y: auto;
+}
+
 
 
 .bgc-gris {
