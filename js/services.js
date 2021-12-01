@@ -37,8 +37,10 @@ let get = async(propiedad) => {
 
 let getRecord = async(propiedad, id) => {
     try{
+        console.log(baseUrl + propiedad + '/' + id);
         let resp = await fetch(baseUrl + propiedad + '/' + id, getToken());
         resp = await resp.json();
+     
         return resp;
     }catch(e){
         console.error(e);

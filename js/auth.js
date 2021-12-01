@@ -17,5 +17,7 @@ const base_url = 'http://142.93.117.12/apiOs';
 function logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('logged');
+    localStorage.removeItem('userid');
+    localStorage.removeItem('tipo');
     window.location.assign('login.html');
 }

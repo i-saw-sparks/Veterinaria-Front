@@ -31,6 +31,8 @@ loginForm.addEventListener('submit', e => {
         console.log(resp);
         if(resp['token']){
             localStorage.setItem('token', resp['token']);
+            localStorage.setItem('id', resp['userid']);
+            localStorage.setItem('tipo', resp['tipo_usuario'])
             localStorage.setItem('logged', 'true');
 
             window.location.assign('calendario.html');
