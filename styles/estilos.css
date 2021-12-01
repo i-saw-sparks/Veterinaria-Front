@@ -360,3 +360,7 @@ textarea.parsley-error {
         padding: 0;
     }
 }
+
+.active{
+    font-weight: bolder !important;
+}
