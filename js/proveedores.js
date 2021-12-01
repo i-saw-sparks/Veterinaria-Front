@@ -1,6 +1,6 @@
 const body = document.getElementById('body');
 
-const loadProveedores = (async () => {
+const loadProveedores = async () => {
     let resp = await get('proveedor');
 
     body.innerHTML = '';
@@ -17,7 +17,7 @@ const loadProveedores = (async () => {
                     <h6 class="card-subtitle text-muted">
                         <i class="fas fa-info m-2"></i> ${p.descripcion}
                     </h6>
-                    <a href="cliente.html?id=${p.id}" class="card-link btn btn-primary mt-3">
+                    <a href="new-proveedor.html?id=${p.id}" class="card-link btn btn-primary mt-3">
                         Editar proveedor
                     </a>
                     <a onclick="eliminar(${p.id})" class="card-link btn btn-danger mt-3">
@@ -28,6 +28,10 @@ const loadProveedores = (async () => {
             </div>
             `;
     });
+}
+
+(async()=>{
+    await loadProveedores();
 })();
 
 async function eliminar(id) {
@@ -35,7 +39,7 @@ async function eliminar(id) {
         let ok = await deleteRecord('proveedor', id);
         if (ok) {
             alertar('El proveedor se ha eliminado', 'success');
-            loadProveedores();
+            await loadProveedores();
         } else {
             alertar('No se pudo eliminar al proveedor', 'danger');
         }

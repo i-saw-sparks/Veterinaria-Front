@@ -47,6 +47,6 @@ let productoController;
         }
     ];
 
-    productoController = new FormBuilder(test, 'form_content_', 'form', 'proveedor');
-    
+    proveedorController = new FormBuilder(test, 'form_content_', 'form', 'proveedor');
+    await proveedorController.load();
 })();
