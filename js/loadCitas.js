@@ -45,12 +45,7 @@ const container = document.getElementById('citas-container');
                             <li class="list-group-item">Fin: ${r['hora_fin']}</li>
                             <li class="list-group-item">Tipo: ${r['tipo']}</li>
                         </ul>
-                    </div>
-                    <div class="text-center">
-                        <a href="plant.html?id=${r['id']}" class="btn btn-outline-primary px-4">
-                            Más detalles
-                        </a>
-                    </div>
+                    </div>                    
                 </div>
             </div>`
 
