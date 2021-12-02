@@ -19,7 +19,7 @@ const loadCitas = async () => {
                     <i class="far fa-calendar-alt m-2"></i> ${fecha}
                 </h6>
                 <h6 class="card-subtitle text-muted">
-                    <i class="fas fa-user m-2"></i> ${c.nombreUsuario}
+                    <a href="cliente-detalles.html?id=${c.id_usuario}"><i class="fas fa-user m-2"></i> ${c.nombreUsuario}</a>
                     <i class="fas fa-paw m-2"></i> ${c.nombreMascota}
                 </h6>
                 <a href="new-cita.html?id=${c.id}" class="card-link btn btn-primary mt-3">
