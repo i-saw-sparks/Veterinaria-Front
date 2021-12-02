@@ -11,6 +11,9 @@ async function loadCliente() {
     }
     let resp = await get('cliente/' + id);
     let mascotas = await get('mascota');
+    let citas = await get('cita');
+
+    idMascotas = [];
 
     console.log(resp);
     body.innerHTML = '';
@@ -34,14 +37,15 @@ async function loadCliente() {
                     </p>                                        
                 </h6>           
             </div>
-            <div class="card shadow col col-md-5 pt-1">     
-            <h3 class="mt-2 mx-2 text-center">Mascotas de este cliente</h3> 
-            <hr class="mt-0 mx-4">          
+            <div class="row">
+            <div class="card shadow col col-md-5 pt-1 limit-height">     
+            <h3 class="mt-2 mx-2 text-center">Mascotas de este cliente</h3>        
             `;
     mascotas.forEach(mascota => {
-        if(mascota.id_cliente == id)
-        htmlTotal += `
-        <div class="text-muted row mx-4">
+        if (mascota.id_cliente == id) {
+            idMascotas.push(mascota.id);
+            htmlTotal += `
+        <div class="text-muted row mx-4 border-bottom pt-2 pb-1">
             <div class="col col-lg-8">
                 <p>Nombre: ${mascota.nombre}</p>
                 <p>Fecha de nacimiento: ${mascota.fecha_nacimiento.substring(0, mascota.fecha_nacimiento.indexOf('T'))}</p>
@@ -53,10 +57,33 @@ async function loadCliente() {
                 </a>
             </div>
         </div>
-        <hr class="mx-4">
         `
+        }
     });
+    htmlTotal += `</div>
+    <div class="col col-md-1"></div>
+    <div class="card shadow col col-md-6 pt-1 limit-height">     
+            <h3 class="mt-2 mx-2 text-center">Citas de este cliente</h3> 
+   `;
+    citas.forEach(cita => {
+        idMascotas.forEach(idMascota => {
+            if (cita.id_mascota == idMascota) {
+
+                htmlTotal += `
+            <div class="text-muted row mx-4 border-bottom pt-2 pb-1">
+                <div class="col col-lg-8">
+                    <p>Fecha: ${cita.fecha.substring(0, cita.fecha.indexOf('T'))}</p>
+                    <p>Hora inicio: ${cita.hora_inicio}</p>
+                    <p>Hora fin: ${cita.hora_fin}</p>
+                    <p>Tipo: ${cita.tipo}</p>
+                </div>
+            </div>
+            `
+            }
+        })
+    })
     htmlTotal += `
+                </div>
             </div>
         </div>
         `;
