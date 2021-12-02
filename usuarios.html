@@ -24,6 +24,13 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+        <script>
+            window.onload = function permisoBoton(){
+                if(localStorage.getItem("tipo") != 1){
+                    document.getElementById("botonNuevo").hidden = true;
+                }
+            }
+        </script>
     </head>
     <body class="">
         <div class="contenido ">
@@ -61,11 +68,9 @@
                         <div class="col-md-9">
                         </div>
                         <div class="col-md-3">
-                            <a href="new-usuario.html">
-                                <button class="btn btn-success">
-                                    Nuevo usuario
-                                </button>
-                            </a>
+                            <button class="btn btn-success" id="botonNuevo" onclick="window.location.href = 'new-usuario.html'">
+                                Nuevo usuario
+                            </button>
                         </div>
                     </div>
                     <div class="row">
