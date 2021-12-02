@@ -8,14 +8,7 @@ const container = document.getElementById('citas-container');
 
 
     container.innerHTML = '';
-    if (citas.length == 0) {
-        container.innerHTML = `
-            <div class="my-5">
-                <h1>
-                    No tienes ninguna cita para hoy 🐶                    
-                </h1>
-            </div>`;
-    }
+   
 
     function sameDay(d1, d2) {
         // let tzoffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
@@ -52,4 +45,13 @@ const container = document.getElementById('citas-container');
             container.innerHTML += body;
         }
     });
+
+    if (container.innerHTML == '') {
+        container.innerHTML = `
+            <div class="my-5">
+                <h1>
+                    No tienes ninguna cita para hoy 🐶                    
+                </h1>
+            </div>`;
+    }
 })();
