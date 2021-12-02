@@ -39,12 +39,19 @@ async function loadCliente() {
             <hr class="mt-0 mx-4">          
             `;
     mascotas.forEach(mascota => {
-        if(mascota.id == id)
+        if(mascota.id_cliente == id)
         htmlTotal += `
-        <div class="text-muted  mx-4">
-        <p>Nombre: ${mascota.nombre}</p>
-        <p>Fecha de nacimiento: ${mascota.fecha_nacimiento.substring(0, mascota.fecha_nacimiento.indexOf('T'))}</p>
-        <p>Especie: ${mascota.especie}</p>
+        <div class="text-muted row mx-4">
+            <div class="col col-lg-8">
+                <p>Nombre: ${mascota.nombre}</p>
+                <p>Fecha de nacimiento: ${mascota.fecha_nacimiento.substring(0, mascota.fecha_nacimiento.indexOf('T'))}</p>
+                <p>Especie: ${mascota.especie}</p>
+            </div>
+            <div class="col col-lg-4">
+                <a href="mascota-detalles.html?id=${mascota.id}" class="card-link btn btn-secondary mt-3">
+                    Ver detalles
+                </a>
+            </div>
         </div>
         <hr class="mx-4">
         `
