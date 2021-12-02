@@ -52,7 +52,7 @@ async function loadCliente() {
                 <p>Especie: ${mascota.especie}</p>
             </div>
             <div class="col col-lg-4">
-                <a href="mascota-detalles.html?id=${mascota.id}" class="card-link btn btn-secondary mt-3">
+                <a href="mascotas_detalles.html?id=${mascota.id}" class="card-link btn btn-secondary mt-3">
                     Ver detalles
                 </a>
             </div>
