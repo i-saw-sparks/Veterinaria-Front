@@ -15,7 +15,7 @@ const loadMascotas = async () => {
                         <i class="fas fa-paw m-2"></i><b>Especie: </b>${ m.especie }
                     </h6>
                     <h6 class="card-subtitle text-muted">
-                        <i class="fas fa-user m-2"></i><b>Dueño: </b>${m.nombreCliente}
+                    <a href="cliente-detalles.html?id=${m.id_cliente}"><i class="fas fa-user m-2"></i> ${m.nombreCliente}</a>      
                     </h6>
                     <a href="mascotas_detalles.html?id=${ m.id }" class="card-link btn btn-secondary mt-3">
                         Ver detalles
