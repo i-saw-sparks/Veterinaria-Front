@@ -90,12 +90,7 @@ class FormBuilder {
                     let ok = await updateRecord(endpoint, body);
 
                     if (ok) {
-                        alertar('Registro editado', 'success');
-                        setTimeout(() => {
-
-                            window.location.assign(this.endpoint + 's.html');
-
-                        }, 2500);
+                        alertar('Registro editado', 'success');                        
                     } else {
                         alertar('No se pudo editar el registro', 'danger');
                     }
