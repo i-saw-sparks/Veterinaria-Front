@@ -2,9 +2,12 @@ const body = document.getElementById('body');
 
 const loadProductos = async () => {
     let resp = await get('producto');
+    var tipo = localStorage.getItem("tipo");
+
     body.innerHTML = '';
+    displayItems = '';
     resp.forEach(p => {
-        body.innerHTML += `
+        displayItems += `
             <div class="card m-3">
                 <div class="card-body">
                     <h5 class="card-title">${p.nombre}</h5>
@@ -16,17 +19,20 @@ const loadProductos = async () => {
                     <h6 class="card-subtitle text-muted">
                         <i class="fas fa-info m-2"></i> ${p.descripcion}
                     </h6>
+            `
+            if(tipo == 1 || tipo == 2){
+                displayItems += `
                     <a href="new-producto.html?id=${ p.id }" class="card-link btn btn-primary mt-3">
                         Editar producto
                     </a>
                     <a onclick="eliminar(${p.id})" class="card-link btn btn-danger mt-3">
                         Eliminar producto
                     </a>
-                
-                </div>
-            </div>
-            `;
+                `
+            }
+        displayItems += '</div></div>';
     });
+    body.innerHTML += displayItems;
 };
 
 (async()=>{

@@ -3,12 +3,14 @@ const body = document.getElementById('body');
 const loadUsuarios = async () => {
     let resp = await get('usuario');
     var t_usuario = '';
+    var tipo = localStorage.getItem("tipo");
 
     body.innerHTML = '';
+    displayItems = '';
     resp.forEach(u => {
         t_usuario = cambiarTipoUsuario(u.tipo_usuario);
         n_horario = cambiarHorario(u.horario);
-        body.innerHTML += `
+        displayItems += `
             <div class="card m-3">
                 <div class="card-body">
                     <h5 class="card-title">${u.nombre}</h5>
@@ -16,17 +18,20 @@ const loadUsuarios = async () => {
                         <i class="far fa-calendar-alt m-2"></i> Horario: ${n_horario}
                         <i class="far fa-user-circle m-2"></i> Tipo de usuario: ${t_usuario}
                     </h6>
+                `;
+                if(tipo == 1){
+                    displayItems += `
                     <a href="new-usuario.html?id=${u.id}" class="card-link btn btn-primary mt-3">
                         Editar usuario
                     </a>
                     <a onclick="eliminar(${u.id})" class="card-link btn btn-danger mt-3">
                         Eliminar usuario
                     </a>
-                
-                </div>
-            </div>
-            `;
+                    `;
+                }
+        displayItems += '</div></div>'
     });
+    body.innerHTML += displayItems;
 }
 
 (async()=>{
