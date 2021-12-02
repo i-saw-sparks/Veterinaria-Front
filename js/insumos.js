@@ -13,7 +13,7 @@ const loadInsumos = async () => {
                     <h5 class="card-title">${i.nombre}</h5>
                     <h6 class="card-subtitle text-muted">
                         <i class="fas fa-dollar-sign m-2"></i> $${i.precio}
-                        <i class="fas fa-box-open m-2"></i> Cantidad: ${i.precio}
+                        <i class="fas fa-box-open m-2"></i> Cantidad: ${i.cantidad}
                         <i class="fas fa-angle-double-right m-2"></i> Tipo: ${i.tipo}
                     </h6>
             `
