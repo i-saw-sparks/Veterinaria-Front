@@ -26,7 +26,7 @@ const loadMascotas = async () => {
                     <a onclick="eliminar(${ m.id })" class="card-link btn btn-danger mt-3">
                         Eliminar mascota
                     </a>
-                    <a href="registros.html?id=${ m.id }" class="card-link btn btn-success mt-3">
+                    <a href="new-registro.html?id_mascota=${ m.id }" class="card-link btn btn-success mt-3">
                         Añadir registro
                     </a>
                 </div>

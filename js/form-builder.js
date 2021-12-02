@@ -36,11 +36,20 @@ class FormBuilder {
                     </select> 
                 </div>`);
             } else {
-                this.append(`
-                <div class="form-group">
-                    <label for="${p.id}"> ${p.name} </label>
-                    <input type="${p.type}" min="${min}" class="form-control" id="${p.id}" placeholder="${p.placeholder}" required> 
-                </div>`);
+                if (p.value) {
+                    this.append(`
+                    <div class="form-group">
+                        <label for="${p.id}"> ${p.name} </label>
+                        <input type="${p.type}" min="${min}" class="form-control" id="${p.id}" placeholder="${p.placeholder}" value="${p.value}" required> 
+                    </div>`);
+                } else {
+                    this.append(`
+                    <div class="form-group">
+                        <label for="${p.id}"> ${p.name} </label>
+                        <input type="${p.type}" min="${min}" class="form-control" id="${p.id}" placeholder="${p.placeholder}"  required> 
+                    </div>`);
+                }
+
             }
         });
 
@@ -77,17 +86,19 @@ class FormBuilder {
 
                 }
             } else {
-                if( confirm('¿Desea actualizar este registro?')) {
+                if (confirm('¿Desea actualizar este registro?')) {
                     let ok = await updateRecord(endpoint, body);
 
                     if (ok) {
                         alertar('Registro editado', 'success');
                         setTimeout(() => {
+
                             window.location.assign(this.endpoint + 's.html');
+
                         }, 2500);
                     } else {
                         alertar('No se pudo editar el registro', 'danger');
-                    }                    
+                    }
                 }
             }
 
@@ -118,9 +129,9 @@ class FormBuilder {
                 try {
                     const form = document.getElementById(k);
 
-                    if(form.type == 'date'){
+                    if (form.type == 'date') {
                         form.value = body[k].substring(0, body[k].indexOf('T'));
-                    }else{
+                    } else {
                         form.value = body[k];
                     }
                 } catch (e) {
