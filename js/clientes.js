@@ -2,6 +2,7 @@ const body = document.getElementById('body');
 
 async function loadClientes() {
     let resp = await get('cliente');
+    let mascotas = await get('mascota');
 
     body.innerHTML = '';
     resp.forEach(c => {
@@ -14,6 +15,9 @@ async function loadClientes() {
                     <i class="fas fa-home mx-2"></i> ${c.direccion}
                     <i class="far fa-envelope mx-2"></i> ${c.email}
                 </h6>
+                <a href="cliente-detalles.html?id=${c.id}" class="card-link btn btn-secondary mt-3">
+                    Ver detalles
+                </a>
                 <a href="new-cliente.html?id=${c.id}" class="card-link btn btn-primary mt-3">
                     Editar detalles
                 </a>
